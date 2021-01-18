@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_music/constant/constant_app.dart';
 
@@ -11,7 +12,7 @@ class _DashBoardState extends State<DashBoardNavigation> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      height: size.height / 5,
+      height: 120.0,
       width: size.width,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
@@ -22,9 +23,11 @@ class _DashBoardState extends State<DashBoardNavigation> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            _buildCurrentPlayingSong((size.height / 5) / 2),
+            SizedBox(height: 8.0),
+            _buildCurrentPlayingSong(),
+            SizedBox(height: 8.0),
             Container(
-              height: (size.height / 5) / 2,
+              height: 60,
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -37,6 +40,10 @@ class _DashBoardState extends State<DashBoardNavigation> {
                   children: [
                     Icon(
                       Icons.home,
+                      color: kLightColor,
+                    ),
+                    Icon(
+                      Icons.search_outlined,
                       color: kLightColor,
                     ),
                     Icon(
@@ -57,7 +64,7 @@ class _DashBoardState extends State<DashBoardNavigation> {
     );
   }
 
-  _buildCurrentPlayingSong(size) {
+  _buildCurrentPlayingSong() {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/song');

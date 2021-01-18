@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_music/constant/constant_app.dart';
-import 'package:flutter_music/models/playlist.dart';
 import 'package:flutter_music/models/song.dart';
 import 'package:flutter_music/pages/dashboard/dashboard_navigation.dart';
 import 'package:flutter_music/stores/albums_store.dart';
@@ -20,7 +19,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    var a = albumsStore.getAlbums();
+    albumsStore.getAlbums();
     super.initState();
   }
 
@@ -76,7 +75,7 @@ class _HomePageState extends State<HomePage> {
           _selectedIndex = index;
         });
       },
-      groupAlignment: -0.1,
+      groupAlignment: -0.5,
       labelType: NavigationRailLabelType.all,
       selectedLabelTextStyle:
           TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
@@ -150,7 +149,7 @@ class _HomePageState extends State<HomePage> {
           }
         }),
         Container(
-          height: size.height * 0.3,
+          height: size.height/2.5,
           width: size.width * 0.8,
           child: ListView.builder(
             itemCount: songs.length,
