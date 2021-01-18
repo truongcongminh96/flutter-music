@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_music/pages/home_page/home_page.dart';
+import 'package:flutter_music/pages/login/login_page.dart';
 import 'package:flutter_music/pages/playing_song/playing_song.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,8 +17,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           textTheme: GoogleFonts.mcLarenTextTheme(Theme.of(context).textTheme)),
-      home: HomePage(),
-      routes: {'/song': (context) => PlayingSong()},
+      home: LoginPage(),
+      routes: {
+        '/song': (context) => PlayingSong(),
+        '/home_page': (context) => HomePage()
+      },
     );
   }
 }
