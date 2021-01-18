@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_music/constant/constant_app.dart';
 import 'package:flutter_music/models/playlist.dart';
 import 'package:flutter_music/models/song.dart';
+import 'package:flutter_music/pages/dashboard/dashboard_navigation.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -38,123 +39,18 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Container(
-        height: size.height,
-        child: Column(
-          children: [
-            Container(
-              height: size.height * 0.67,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildNavigationRail(),
-                  _buildPlaylistAndSongs(size)
-                ],
-              ),
-            ),
-            _buildCurrentPlayingSong(size),
-            _buildBottomBar(size)
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildBottomBar(Size size) {
-    return Container(
-      height: size.height * 0.07,
-      color: kSecondaryColor,
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(50),
-              topRight: Radius.circular(50),
-            ),
-            color: kWhiteColor),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Icon(
-              Icons.home,
-              color: kLightColor,
-            ),
-            Icon(
-              Icons.search,
-              color: kLightColor,
-            ),
-            Icon(
-              Icons.playlist_play,
-              color: kLightColor,
-            ),
-            Icon(
-              Icons.favorite_border,
-              color: kLightColor,
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCurrentPlayingSong(Size size) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, '/song');
-      },
-      child: Container(
-        height: size.height * 0.1,
-        padding: EdgeInsets.symmetric(horizontal: 40.0),
-        decoration: BoxDecoration(
-            color: kSecondaryColor,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(50.0),
-                topRight: Radius.circular(50.0))),
-        child: Row(
-          children: [
-            CircleAvatar(
-                radius: 25,
-                backgroundImage: AssetImage('assets/images/colors.jpg')),
-            SizedBox(
-              width: 10.0,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Rewrite the stars',
-                  style: TextStyle(
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15),
-                ),
-                Text(
-                  'Zac Effron',
-                  style: TextStyle(color: kLightColor2, fontSize: 12),
-                )
-              ],
-            ),
-            Expanded(
-              child: Container(),
-            ),
-            Icon(
-              Icons.favorite_border,
-              color: kPrimaryColor,
-            ),
-            SizedBox(width: 10.0),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadiusDirectional.circular(10.0),
-                  color: Colors.white),
-              child: Icon(
-                Icons.pause,
-                color: kPrimaryColor,
-              ),
-            )
-          ],
-        ),
-      ),
+          height: size.height,
+          child: SingleChildScrollView(
+            child: Container(
+                height: size.height,
+                child: Row(
+                  children: [
+                    _buildNavigationRail(),
+                    _buildPlaylistAndSongs(size)
+                  ],
+                )),
+          )),
+      bottomNavigationBar: DashBoardNavigation(),
     );
   }
 
