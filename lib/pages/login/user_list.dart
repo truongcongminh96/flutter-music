@@ -18,7 +18,6 @@ class UserList extends StatelessWidget {
     return Observer(
       builder: (_) {
         final List<User> users = future.result;
-        print(future.status == FutureStatus.pending);
         if (future.status == FutureStatus.pending) {
           return Center(
             child: CircularProgressIndicator(),
@@ -58,7 +57,6 @@ class UserList extends StatelessWidget {
             ),
           );
         }
-
       },
     );
   }

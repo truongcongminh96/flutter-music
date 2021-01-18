@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_music/constant/constant_app.dart';
 import 'package:flutter_music/models/playlist.dart';
 import 'package:flutter_music/models/song.dart';
 import 'package:flutter_music/pages/dashboard/dashboard_navigation.dart';
+import 'package:flutter_music/stores/albums_store.dart';
+import 'package:flutter_music/models/albums.dart';
+import 'package:mobx/mobx.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,9 +16,18 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
+  final AlbumsStore albumsStore = AlbumsStore();
+
+  @override
+  void initState() {
+    var a = albumsStore.getAlbums();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: kWhiteColor,
       appBar: AppBar(
@@ -112,20 +125,30 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildPlaylistAndSongs(Size size) {
+    final future = albumsStore.albumsListFuture;
     return Column(
       children: [
-        Container(
-          height: size.height / 3,
-          width: size.width * 0.8,
-          // color: Colors.purple,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: playlists.length,
-            itemBuilder: (context, index) => _buildPlaylistItem(
-                image: playlists[index].image,
-                title: playlists[index].playlistName),
-          ),
-        ),
+        Observer(builder: (_) {
+          final List<Albums> albumsList = future.result;
+          if (future.status == FutureStatus.pending) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            return Container(
+              height: size.height / 3,
+              width: size.width * 0.8,
+              // color: Colors.purple,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: albumsList.length,
+                itemBuilder: (context, index) => _buildPlaylistItem(
+                    image: albumsList[index].images.first.url,
+                    title: albumsList[index].name),
+              ),
+            );
+          }
+        }),
         Container(
           height: size.height * 0.3,
           width: size.width * 0.8,
@@ -149,15 +172,16 @@ class _HomePageState extends State<HomePage> {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
           color: Colors.orange,
-          image: DecorationImage(image: AssetImage(image), fit: BoxFit.fill)),
+          image: DecorationImage(image: NetworkImage(image), fit: BoxFit.fill)),
       child: Align(
         alignment: Alignment.bottomCenter,
         child: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
+            Expanded(
               child: Text(
                 title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

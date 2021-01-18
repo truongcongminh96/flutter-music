@@ -2,7 +2,7 @@ import 'package:flutter_music/models/artists.dart';
 import 'package:flutter_music/models/external_urls.dart';
 import 'package:flutter_music/models/images.dart';
 
-class Album {
+class Albums {
   String albumType;
   List<Artists> artists;
   ExternalUrls externalUrls;
@@ -16,7 +16,7 @@ class Album {
   String type;
   String uri;
 
-  Album(
+  Albums(
       {this.albumType,
         this.artists,
         this.externalUrls,
@@ -30,7 +30,7 @@ class Album {
         this.type,
         this.uri});
 
-  Album.fromJson(Map<String, dynamic> json) {
+  Albums.fromJson(Map<String, dynamic> json) {
     albumType = json['album_type'];
     if (json['artists'] != null) {
       artists = new List<Artists>();

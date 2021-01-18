@@ -1,4 +1,4 @@
-import 'package:flutter_music/models/album.dart';
+import 'package:flutter_music/models/albums.dart';
 import 'package:flutter_music/models/artists.dart';
 import 'package:flutter_music/models/external_ids.dart';
 import 'package:flutter_music/models/external_urls.dart';
@@ -27,7 +27,7 @@ class AllTracks {
 }
 
 class Tracks {
-  Album album;
+  Albums album;
   List<Artists> artists;
   int discNumber;
   int durationMs;
@@ -65,7 +65,7 @@ class Tracks {
         this.uri});
 
   Tracks.fromJson(Map<String, dynamic> json) {
-    album = json['album'] != null ? new Album.fromJson(json['album']) : null;
+    album = json['album'] != null ? new Albums.fromJson(json['album']) : null;
     if (json['artists'] != null) {
       artists = new List<Artists>();
       json['artists'].forEach((v) {
