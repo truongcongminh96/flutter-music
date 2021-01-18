@@ -3,10 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_music/models/user.dart';
 
-class NetworkService {
-
+class UserService {
   List<User> users = List();
-  List<Post> posts = List();
 
   Future getData(String url) async {
     final response = await http.get(url);
@@ -16,19 +14,6 @@ class NetworkService {
         return User.fromJSON(json);
       }).toList();
       return users;
-    } else {
-      print("Error in URL");
-    }
-  }
-
-  Future getPosts(String url) async {
-    final response = await http.get(url);
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      posts = (data as List).map((json) {
-        return Post.fromJSON(json);
-      }).toList();
-      return posts;
     } else {
       print("Error in URL");
     }

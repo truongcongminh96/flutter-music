@@ -1,13 +1,13 @@
+import 'package:flutter_music/services/user_service.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_music/models/user.dart';
-import 'package:flutter_music/network_service.dart';
 
 part 'user_store.g.dart';
 
 class UserStore = _UserStore with _$UserStore;
 
 abstract class _UserStore with Store {
-  final NetworkService httpClient = NetworkService();
+  final UserService httpClient = UserService();
 
   @observable
   ObservableFuture<List<User>> userListFuture;
