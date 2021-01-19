@@ -21,13 +21,13 @@ class _TrackListState extends State<TrackList> {
     final albumsListFuture = tracksStore.tracksListFuture;
     return
       ListView.builder(
-      itemCount: songs.length ?? 0,
-      itemBuilder: (context, index) => _buildSonglistItem(
-        image: songs[index].image,
-        title: songs[index].songName,
-        subtitle: songs[index].artist,
-      ),
-    );
+        itemCount: songs.length ?? 0,
+        itemBuilder: (context, index) => _buildSonglistItem(
+          image: songs[index].image,
+          title: songs[index].songName,
+          subtitle: songs[index].artist,
+        ),
+      );
   }
 
   Widget _buildSonglistItem({String image, String title, String subtitle}) {

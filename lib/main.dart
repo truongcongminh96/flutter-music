@@ -16,11 +16,11 @@ class MyApp extends StatelessWidget {
       title: 'Music App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white,
           textTheme: GoogleFonts.mcLarenTextTheme(Theme.of(context).textTheme)),
       home: LoginPage(),
       routes: {
-        '/song': (context) => PlayingSong(),
-        '/home_page': (context) => HomePage()
+        '/song': (context) => PlayingSong()
       },
     );
   }
