@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_music/pages/music/index.dart';
+import 'package:flutter_music/pages/podcasts/index.dart';
 import 'package:flutter_music/widgets/list_card.dart';
 
 class RecommendList extends StatefulWidget {
@@ -10,7 +10,7 @@ class RecommendList extends StatefulWidget {
 class _RecommendListState extends State<RecommendList> {
   @override
   Widget build(BuildContext context) {
-    return                   SingleChildScrollView(
+    return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: <Widget>[
@@ -24,7 +24,7 @@ class _RecommendListState extends State<RecommendList> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return MusicPage();
+                    return PodCasts();
                   },
                 ),
               );
