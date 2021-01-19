@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_music/constant/constant_app.dart';
 import 'package:flutter_music/models/song.dart';
+import 'package:flutter_music/models/tracks.dart';
 import 'package:flutter_music/pages/dashboard/dashboard_navigation.dart';
 import 'package:flutter_music/stores/albums_store.dart';
 import 'package:flutter_music/models/albums.dart';
+import 'package:flutter_music/stores/tracks_store.dart';
 import 'package:mobx/mobx.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,10 +18,12 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   final AlbumsStore albumsStore = AlbumsStore();
+  final TracksStore tracksStore = TracksStore();
 
   @override
   void initState() {
     albumsStore.getAlbums();
+    tracksStore.getTracks();
     super.initState();
   }
 
@@ -124,12 +128,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildPlaylistAndSongs(Size size) {
-    final future = albumsStore.albumsListFuture;
+    final albumsListFuture = albumsStore.albumsListFuture;
+    final tracksListFuture = tracksStore.tracksListFuture;
     return Column(
       children: [
         Observer(builder: (_) {
-          final List<Albums> albumsList = future.result;
-          if (future.status == FutureStatus.pending) {
+          final List<Albums> albumsList = albumsListFuture.result;
+
+          if (albumsListFuture.status == FutureStatus.pending) {
             return Center(
               child: CircularProgressIndicator(),
             );
@@ -148,18 +154,28 @@ class _HomePageState extends State<HomePage> {
             );
           }
         }),
-        Container(
-          height: size.height/2.5,
-          width: size.width * 0.8,
-          child: ListView.builder(
-            itemCount: songs.length,
-            itemBuilder: (context, index) => _buildSonglistItem(
-              image: songs[index].image,
-              title: songs[index].songName,
-              subtitle: songs[index].artist,
-            ),
-          ),
-        )
+        Observer(builder: (_) {
+          final List<Tracks> tracksList = tracksListFuture.result;
+          if (tracksListFuture.status == FutureStatus.pending) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            return         Container(
+              height: size.height / 2.5,
+              width: size.width * 0.8,
+              child: ListView.builder(
+                itemCount: tracksList.length,
+                itemBuilder: (context, index) => _buildSonglistItem(
+                  image: tracksList[index].album.images.first.url,
+                  title: tracksList[index].name,
+                  subtitle: tracksList[index].artists.first.name,
+                ),
+              ),
+            );
+          }
+        })
+
       ],
     );
   }
@@ -214,7 +230,7 @@ class _HomePageState extends State<HomePage> {
         height: 50,
         width: 50,
         decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(image), fit: BoxFit.fill),
+            image: DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
             borderRadius: BorderRadius.circular(10.0)),
       ),
     );

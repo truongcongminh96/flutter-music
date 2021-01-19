@@ -1,15 +1,14 @@
 import 'dart:convert';
 
-import 'package:flutter_music/models/albums.dart';
+import 'package:flutter_music/models/tracks.dart';
 import 'package:flutter_music/services/token.dart';
 import 'package:http/http.dart' as http;
 
-class AlbumsService {
-  List<Albums> albums = List();
+class TracksService {
+  List<Tracks> tracks = List();
   String token = Token().token();
 
   Future getData(String url) async {
-    print(url);
     final response = await http.get(url, headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -18,10 +17,10 @@ class AlbumsService {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      albums = (data['albums'] as List).map((json) {
-        return Albums.fromJson(json);
+      tracks = (data['tracks'] as List).map((json) {
+        return Tracks.fromJson(json);
       }).toList();
-      return albums;
+      return tracks;
     } else {
       print("Error in URL");
     }
