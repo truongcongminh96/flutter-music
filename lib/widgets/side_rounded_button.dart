@@ -20,7 +20,7 @@ class SideRoundedButton extends StatelessWidget {
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
-          color: kBlackColor,
+          color: blackSoftColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(radius),
             bottomRight: Radius.circular(radius),

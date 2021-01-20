@@ -57,13 +57,13 @@ class EpisodesCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 16,
-                        color: kBlackColor,
+                        color: blackSoftColor,
                         fontWeight: FontWeight.bold,
                       )),
                   Text(tag,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(color: kLightBlackColor)),
+                      style: TextStyle(color: lightBlackColor)),
                 ],
               )),
           IconButton(

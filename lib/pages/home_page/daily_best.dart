@@ -1,6 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_music/constant/constant_app.dart';
 import 'package:flutter_music/pages/home_page/continue_process.dart';
+import 'package:flutter_music/pages/live_concert/live_concert.dart';
 import 'package:flutter_music/widgets/rating.dart';
 import 'package:flutter_music/widgets/side_rounded_button.dart';
 
@@ -30,7 +32,24 @@ class _DailyBestState extends State<DailyBest> {
               ],
             ),
           ),
-          bestOfTheDayCard(size, context),
+          CarouselSlider.builder(
+              options: CarouselOptions(
+                height: 300,
+                aspectRatio: 16 / 9,
+                viewportFraction: 0.8,
+                initialPage: 0,
+                enableInfiniteScroll: true,
+                reverse: false,
+                autoPlay: true,
+                autoPlayInterval: Duration(seconds: 3),
+                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                enlargeCenterPage: true,
+                scrollDirection: Axis.horizontal,
+              ),
+              itemCount: 15,
+              itemBuilder: (BuildContext context, int itemIndex) =>
+                  bestOfTheDayCard(size, context)),
           ContinueProcess(),
         ],
       ),
@@ -41,7 +60,6 @@ class _DailyBestState extends State<DailyBest> {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 20),
       width: double.infinity,
-      height: 250,
       child: Stack(
         children: <Widget>[
           Positioned(
@@ -54,7 +72,6 @@ class _DailyBestState extends State<DailyBest> {
                 top: 24,
                 right: size.width * .35,
               ),
-              height: 250,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Color(0xFFEAEAEA).withOpacity(.45),
@@ -69,7 +86,7 @@ class _DailyBestState extends State<DailyBest> {
                       "New York Time Best For 11th March 2020",
                       style: TextStyle(
                         fontSize: 9,
-                        color: kLightBlackColor,
+                        color: lightBlackColor,
                       ),
                     ),
                   ),
@@ -79,7 +96,7 @@ class _DailyBestState extends State<DailyBest> {
                   ),
                   Text(
                     "Gary Venchuk",
-                    style: TextStyle(color: kLightBlackColor),
+                    style: TextStyle(color: lightBlackColor),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 10, bottom: 10.0),
@@ -96,7 +113,7 @@ class _DailyBestState extends State<DailyBest> {
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontSize: 10,
-                              color: kLightBlackColor,
+                              color: lightBlackColor,
                             ),
                           ),
                         ),
@@ -124,7 +141,16 @@ class _DailyBestState extends State<DailyBest> {
               child: SideRoundedButton(
                 text: "See more",
                 radius: 24,
-                press: () {},
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return LiveConcert();
+                      },
+                    ),
+                  );
+                },
               ),
             ),
           ),

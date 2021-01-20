@@ -13,7 +13,7 @@ class _PlayingSongState extends State<PlayingSong> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: kSecondaryColor,
+      backgroundColor: secondaryColor,
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
@@ -24,14 +24,14 @@ class _PlayingSongState extends State<PlayingSong> {
           },
           icon: Icon(
             Icons.arrow_back,
-            color: kPrimaryColor,
+            color: primaryColor,
           ),
         ),
         title: Text(
           'Now Playing',
           style: TextStyle(
               fontSize: 15.0,
-              color: kPrimaryColor,
+              color: primaryColor,
               fontWeight: FontWeight.w800),
         ),
         actions: [
@@ -41,7 +41,7 @@ class _PlayingSongState extends State<PlayingSong> {
             },
             icon: Icon(
               Icons.more_horiz,
-              color: kPrimaryColor,
+              color: primaryColor,
             ),
           ),
           SizedBox(
@@ -52,7 +52,7 @@ class _PlayingSongState extends State<PlayingSong> {
       body: SingleChildScrollView(
         child: Container(
           decoration: BoxDecoration(
-            color: kWhiteColor,
+            color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(35.0),
               topRight: Radius.circular(35.0),
@@ -83,7 +83,7 @@ class _PlayingSongState extends State<PlayingSong> {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              color: kPrimaryColor,
+                              color: primaryColor,
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold),
                         ),
@@ -103,7 +103,7 @@ class _PlayingSongState extends State<PlayingSong> {
                 child: Text(
                   'Zac Effron',
                   style: TextStyle(
-                      color: kLightColor,
+                      color: lightGreyColor,
                       fontSize: 15.0,
                       fontWeight: FontWeight.bold),
                 ),
@@ -113,9 +113,9 @@ class _PlayingSongState extends State<PlayingSong> {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 width: double.infinity,
                 child: LinearProgressIndicator(
-                  backgroundColor: kLightColor2,
+                  backgroundColor: lightWhiteColor,
                   value: 0.6,
-                  valueColor: AlwaysStoppedAnimation(kPrimaryColor),
+                  valueColor: AlwaysStoppedAnimation(primaryColor),
                 ),
               ),
               Padding(
@@ -125,7 +125,7 @@ class _PlayingSongState extends State<PlayingSong> {
                     Text(
                       '04:30',
                       style: TextStyle(
-                          color: kLightColor,
+                          color: lightGreyColor,
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold),
                     ),
@@ -135,7 +135,7 @@ class _PlayingSongState extends State<PlayingSong> {
                     Text(
                       '06:30',
                       style: TextStyle(
-                          color: kLightColor,
+                          color: lightGreyColor,
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold),
                     )
@@ -150,27 +150,27 @@ class _PlayingSongState extends State<PlayingSong> {
                   children: [
                     Icon(
                       Icons.playlist_add,
-                      color: kLightColor,
+                      color: lightGreyColor,
                       size: 0.09 * size.width,
                     ),
                     Icon(
                       Icons.skip_previous,
-                      color: kPrimaryColor,
+                      color: primaryColor,
                       size: 0.12 * size.width,
                     ),
                     Icon(
                       Icons.play_circle_outline,
-                      color: kPrimaryColor,
+                      color: primaryColor,
                       size: 0.18 * size.width,
                     ),
                     Icon(
                       Icons.skip_next,
-                      color: kPrimaryColor,
+                      color: primaryColor,
                       size: 0.12 * size.width,
                     ),
                     Icon(
                       Icons.swap_horiz,
-                      color: kLightColor,
+                      color: lightGreyColor,
                       size: 0.09 * size.width,
                     ),
                   ],

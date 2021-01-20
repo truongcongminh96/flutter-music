@@ -10,18 +10,18 @@ class _DashBoardActionTabState extends State<DashBoardActionTab> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: kWhiteColor,
+      color: Colors.white,
       height: 50.0,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Icon(
             Icons.add_chart,
-            color: kLightColor,
+            color: lightGreyColor,
           ),
           Icon(
             Icons.playlist_play,
-            color: kLightColor,
+            color: lightGreyColor,
           ),
           Icon(
             Icons.favorite,

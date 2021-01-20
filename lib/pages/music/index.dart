@@ -31,14 +31,14 @@ class _MusicPageState extends State<MusicPage> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: kWhiteColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           'Discover',
           style: Theme.of(context)
               .textTheme
               .headline4
-              .copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
+              .copyWith(fontWeight: FontWeight.bold, color: primaryColor),
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -47,7 +47,7 @@ class _MusicPageState extends State<MusicPage> {
             padding: const EdgeInsets.all(12.0),
             child: Icon(
               Icons.account_circle,
-              color: kPrimaryColor,
+              color: primaryColor,
               size: 30,
             ),
           )
@@ -81,14 +81,14 @@ class _MusicPageState extends State<MusicPage> {
       groupAlignment: -0.5,
       labelType: NavigationRailLabelType.all,
       selectedLabelTextStyle:
-          TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+          TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
       unselectedLabelTextStyle:
-          TextStyle(color: kLightColor, fontWeight: FontWeight.bold),
+          TextStyle(color: lightGreyColor, fontWeight: FontWeight.bold),
       leading: Column(
         children: [
           Icon(
             Icons.playlist_play,
-            color: kPrimaryColor,
+            color: primaryColor,
           ),
           SizedBox(height: 5.0),
           RotatedBox(
@@ -96,7 +96,7 @@ class _MusicPageState extends State<MusicPage> {
             child: Text(
               'Your playlists',
               style:
-                  TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                  TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
             ),
           )
         ],
@@ -210,7 +210,7 @@ class _MusicPageState extends State<MusicPage> {
                   color: Colors.white),
               child: Icon(
                 Icons.play_circle_outline,
-                color: kPrimaryColor,
+                color: primaryColor,
               ),
             )
           ],

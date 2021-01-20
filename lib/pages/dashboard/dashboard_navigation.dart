@@ -19,7 +19,7 @@ class _DashBoardState extends State<DashBoardNavigation> {
             topLeft: Radius.circular(50),
             topRight: Radius.circular(50),
           ),
-          color: kSecondaryColor),
+          color: secondaryColor),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -34,25 +34,25 @@ class _DashBoardState extends State<DashBoardNavigation> {
                       topLeft: Radius.circular(50),
                       topRight: Radius.circular(50),
                     ),
-                    color: kWhiteColor),
+                    color: Colors.white),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Icon(
                       Icons.home,
-                      color: kLightColor,
+                      color: lightGreyColor,
                     ),
                     Icon(
                       Icons.search_outlined,
-                      color: kLightColor,
+                      color: lightGreyColor,
                     ),
                     Icon(
                       Icons.playlist_play,
-                      color: kLightColor,
+                      color: lightGreyColor,
                     ),
                     Icon(
                       Icons.favorite_border,
-                      color: kLightColor,
+                      color: lightGreyColor,
                     )
                   ],
                 ),
@@ -72,7 +72,7 @@ class _DashBoardState extends State<DashBoardNavigation> {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 40.0),
         decoration: BoxDecoration(
-            color: kSecondaryColor,
+            color: secondaryColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(50.0),
                 topRight: Radius.circular(50.0))),
@@ -94,7 +94,7 @@ class _DashBoardState extends State<DashBoardNavigation> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        color: kPrimaryColor,
+                        color: primaryColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 15),
                   ),
@@ -102,7 +102,7 @@ class _DashBoardState extends State<DashBoardNavigation> {
                     'Zac Effron',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: kLightColor2, fontSize: 12),
+                    style: TextStyle(color: lightWhiteColor, fontSize: 12),
                   )
                 ],
               ),
@@ -112,7 +112,7 @@ class _DashBoardState extends State<DashBoardNavigation> {
             ),
             Icon(
               Icons.favorite_border,
-              color: kPrimaryColor,
+              color: primaryColor,
             ),
             SizedBox(width: 10.0),
             Container(
@@ -123,7 +123,7 @@ class _DashBoardState extends State<DashBoardNavigation> {
                   color: Colors.white),
               child: Icon(
                 Icons.pause,
-                color: kPrimaryColor,
+                color: primaryColor,
               ),
             )
           ],

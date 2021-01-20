@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_music/pages/music/index.dart';
 import 'package:flutter_music/stores/shows_store.dart';
 import 'package:flutter_music/widgets/episodes_card.dart';
 import 'package:mobx/mobx.dart';
@@ -48,7 +49,16 @@ class _EpisodesState extends State<Episodes> {
                               name: episodesList.items[index].name,
                               chapterNumber: 1,
                               tag: episodesList.items[index].description,
-                              press: () {},
+                              press: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return MusicPage();
+                                    },
+                                  ),
+                                );
+                              },
                             )
                           ],
                         )),

@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color(0xff0968B0);
-const kSecondaryColor = Color(0xff7ec8e3);
-const kLightColor = Colors.grey;
-const kLightColor2 =  Color(0xffedf6fa);
-const kWhiteColor = Colors.white;
+const primaryColor = Color(0xff0968B0);
+const lightGreyColor = Colors.grey;
+const lightWhiteColor = Color(0xffedf6fa);
 const favoriteColor = Color(0xffd293c6);
 
-const kBlackColor = Color(0xFF393939);
-const kLightBlackColor = Color(0xFF8F8F8F);
-const kIconColor = Color(0xFFF48A37);
-const kProgressIndicator = Color(0xFFBE7066);
+const blackSoftColor = Color(0xFF393939);
+const lightBlackColor = Color(0xFF8F8F8F);
+const iconColor = Color(0xFFF48A37);
+const progressIndicator = Color(0xFFBE7066);
 
-final kShadowColor = Color(0xFFD3D3D3).withOpacity(.84);
+final shadowColor = Color(0xFFD3D3D3).withOpacity(.84);
+const secondaryColor = Color(0xFFFE6D8E);
+const darkBLueColor = Color(0xFF12153D);
+const textLightColor = Color(0xFF9A9BB2);
+const starColor = Color(0xFFFCC419);
+
+const kDefaultPadding = 20.0;
+
+const kDefaultShadow = BoxShadow(
+  offset: Offset(0, 4),
+  blurRadius: 4,
+  color: Colors.black26,
+);

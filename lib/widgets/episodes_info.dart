@@ -56,7 +56,7 @@ class _EpisodesInfoState extends State<EpisodesInfo> {
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 fontSize: 10,
-                                color: kLightBlackColor,
+                                color: lightBlackColor,
                               ),
                             ),
                           ),

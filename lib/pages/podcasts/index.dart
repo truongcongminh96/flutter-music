@@ -102,7 +102,7 @@ class _PodCastsState extends State<PodCasts> {
                             children: <Widget>[
                               RichText(
                                 text: TextSpan(
-                                  style: TextStyle(color: kBlackColor),
+                                  style: TextStyle(color: blackSoftColor),
                                   children: [
                                     TextSpan(
                                       text:
@@ -113,7 +113,7 @@ class _PodCastsState extends State<PodCasts> {
                                     ),
                                     TextSpan(
                                       text: "Gary Venchuk",
-                                      style: TextStyle(color: kLightBlackColor),
+                                      style: TextStyle(color: lightBlackColor),
                                     ),
                                   ],
                                 ),

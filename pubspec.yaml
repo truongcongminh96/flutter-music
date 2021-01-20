@@ -27,6 +27,9 @@ dependencies:
   mobx:
   flutter_mobx:
   http:
+  carousel_slider: ^2.3.1
+  flutter_svg: ^0.19.1
+  animations: ^1.1.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -53,6 +56,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - assets/images/
+     - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

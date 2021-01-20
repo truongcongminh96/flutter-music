@@ -42,7 +42,7 @@ class ListCard extends StatelessWidget {
                   BoxShadow(
                     offset: Offset(0, 10),
                     blurRadius: 33,
-                    color: kShadowColor,
+                    color: shadowColor,
                   ),
                 ],
               ),
@@ -81,7 +81,7 @@ class ListCard extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       text: TextSpan(
-                        style: TextStyle(color: kBlackColor),
+                        style: TextStyle(color: blackSoftColor),
                         children: [
                           TextSpan(
                             text: "$title\n",
@@ -92,7 +92,7 @@ class ListCard extends StatelessWidget {
                           TextSpan(
                             text: auth,
                             style: TextStyle(
-                              color: kLightBlackColor,
+                              color: lightBlackColor,
                             ),
                           ),
                         ],

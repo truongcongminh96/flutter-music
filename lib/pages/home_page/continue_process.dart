@@ -71,7 +71,7 @@ class _ContinueProcessState extends State<ContinueProcess> {
                                 Text(
                                   "Gary Venchuk",
                                   style: TextStyle(
-                                    color: kLightBlackColor,
+                                    color: lightBlackColor,
                                   ),
                                 ),
                                 Align(
@@ -80,7 +80,7 @@ class _ContinueProcessState extends State<ContinueProcess> {
                                     "Chapter 7 of 10",
                                     style: TextStyle(
                                       fontSize: 10,
-                                      color: kLightBlackColor,
+                                      color: lightBlackColor,
                                     ),
                                   ),
                                 ),
@@ -100,7 +100,7 @@ class _ContinueProcessState extends State<ContinueProcess> {
                     height: 7,
                     width: size.width * .65,
                     decoration: BoxDecoration(
-                      color: kProgressIndicator,
+                      color: progressIndicator,
                       borderRadius: BorderRadius.circular(7),
                     ),
                   ),
