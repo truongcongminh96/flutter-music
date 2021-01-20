@@ -24,6 +24,21 @@ mixin _$ShowsStore on _ShowsStore, Store {
     });
   }
 
+  final _$episodesListFutureAtom = Atom(name: '_ShowsStore.episodesListFuture');
+
+  @override
+  ObservableFuture<Episodes> get episodesListFuture {
+    _$episodesListFutureAtom.reportRead();
+    return super.episodesListFuture;
+  }
+
+  @override
+  set episodesListFuture(ObservableFuture<Episodes> value) {
+    _$episodesListFutureAtom.reportWrite(value, super.episodesListFuture, () {
+      super.episodesListFuture = value;
+    });
+  }
+
   final _$_ShowsStoreActionController = ActionController(name: '_ShowsStore');
 
   @override
@@ -38,9 +53,21 @@ mixin _$ShowsStore on _ShowsStore, Store {
   }
 
   @override
+  Future<dynamic> fetchEpisodesShow() {
+    final _$actionInfo = _$_ShowsStoreActionController.startAction(
+        name: '_ShowsStore.fetchEpisodesShow');
+    try {
+      return super.fetchEpisodesShow();
+    } finally {
+      _$_ShowsStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-showsListFuture: ${showsListFuture}
+showsListFuture: ${showsListFuture},
+episodesListFuture: ${episodesListFuture}
     ''';
   }
 }

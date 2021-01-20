@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_music/constant/constant_app.dart';
+import 'package:flutter_music/models/shows.dart';
 import 'package:flutter_music/pages/podcasts/episodes.dart';
 import 'package:flutter_music/widgets/episodes_info.dart';
 import 'package:flutter_music/widgets/rating.dart';
 import 'package:flutter_music/widgets/rounded_button.dart';
 
 class PodCasts extends StatefulWidget {
+  final Shows shows;
+
+  const PodCasts({
+    Key key,
+    @required this.shows,
+  }) : super(key: key);
+
   @override
   _PodCastsState createState() => _PodCastsState();
 }
@@ -41,8 +49,13 @@ class _PodCastsState extends State<PodCasts> {
                     ),
                     child: EpisodesInfo(
                       size: size,
+                      name: widget.shows.name,
+                      description: widget.shows.description,
+                      imageUrl: widget.shows.images.first.url,
                     )),
-                Episodes()
+                Episodes(
+                  showId: widget.shows.id,
+                )
               ],
             ),
             Padding(

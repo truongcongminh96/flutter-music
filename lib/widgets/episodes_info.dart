@@ -2,14 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_music/constant/constant_app.dart';
 import 'package:flutter_music/widgets/rating.dart';
 
-class EpisodesInfo extends StatelessWidget {
-  const EpisodesInfo({
-    Key key,
-    this.size,
-  }) : super(key: key);
+class EpisodesInfo extends StatefulWidget {
+  final String name;
+  final String description;
+  final String imageUrl;
+
+  const EpisodesInfo(
+      {Key key, this.size, this.name, this.imageUrl, this.description})
+      : super(key: key);
 
   final Size size;
 
+  @override
+  _EpisodesInfoState createState() => _EpisodesInfoState();
+}
+
+class _EpisodesInfoState extends State<EpisodesInfo> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,23 +32,13 @@ class EpisodesInfo extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "Crushing &",
+                      this.widget.name,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: Theme.of(context)
                           .textTheme
                           .headline4
-                          .copyWith(fontSize: 28),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: this.size.height * .005),
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.only(top: 0),
-                    child: Text(
-                      "Influence",
-                      style: Theme.of(context).textTheme.subtitle1.copyWith(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
+                          .copyWith(fontSize: 28, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Row(
@@ -49,11 +47,11 @@ class EpisodesInfo extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Container(
-                            width: this.size.width * .3,
+                            width: this.widget.size.width * .3,
                             padding:
-                            EdgeInsets.only(top: this.size.height * .02),
+                                EdgeInsets.only(top: this.widget.size.height * .02),
                             child: Text(
-                              "When the earth was flat andeveryone wanted to win the gameof the best and people and winning with an A game with all the things you have.",
+                              this.widget.description,
                               maxLines: 5,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
@@ -64,7 +62,7 @@ class EpisodesInfo extends StatelessWidget {
                           ),
                           Container(
                             margin:
-                            EdgeInsets.only(top: this.size.height * .015),
+                                EdgeInsets.only(top: this.widget.size.height * .015),
                             padding: EdgeInsets.only(left: 10, right: 10),
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -101,8 +99,8 @@ class EpisodesInfo extends StatelessWidget {
               flex: 1,
               child: Container(
                 color: Colors.transparent,
-                child: Image.asset(
-                  "assets/images/book-1.png",
+                child: Image.network(
+                  this.widget.imageUrl,
                   height: double.infinity,
                   alignment: Alignment.topRight,
                   fit: BoxFit.fitWidth,

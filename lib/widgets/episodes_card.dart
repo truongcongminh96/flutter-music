@@ -35,6 +35,14 @@ class EpisodesCard extends StatelessWidget {
       ),
       child: Row(
         children: <Widget>[
+          Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+                image:
+                DecorationImage(image: NetworkImage('https://i.scdn.co/image/def60d7d416de3b39d2768bf634581545590cb52'), fit: BoxFit.fill),
+                borderRadius: BorderRadius.circular(10.0)),
+          ),
           RichText(
             text: TextSpan(
               children: [

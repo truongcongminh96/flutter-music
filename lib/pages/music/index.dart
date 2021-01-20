@@ -81,9 +81,9 @@ class _MusicPageState extends State<MusicPage> {
       groupAlignment: -0.5,
       labelType: NavigationRailLabelType.all,
       selectedLabelTextStyle:
-      TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+          TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
       unselectedLabelTextStyle:
-      TextStyle(color: kLightColor, fontWeight: FontWeight.bold),
+          TextStyle(color: kLightColor, fontWeight: FontWeight.bold),
       leading: Column(
         children: [
           Icon(
@@ -96,7 +96,7 @@ class _MusicPageState extends State<MusicPage> {
             child: Text(
               'Your playlists',
               style:
-              TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                  TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
             ),
           )
         ],
@@ -133,7 +133,6 @@ class _MusicPageState extends State<MusicPage> {
       children: [
         Observer(builder: (_) {
           final List<Albums> albumsList = albumsListFuture.result;
-
           if (albumsListFuture.status == FutureStatus.pending) {
             return Center(
               child: CircularProgressIndicator(),
@@ -160,7 +159,7 @@ class _MusicPageState extends State<MusicPage> {
               child: CircularProgressIndicator(),
             );
           } else {
-            return         Container(
+            return Container(
               height: size.height / 2.5,
               width: size.width * 0.8,
               child: ListView.builder(
@@ -174,7 +173,6 @@ class _MusicPageState extends State<MusicPage> {
             );
           }
         })
-
       ],
     );
   }
@@ -229,7 +227,8 @@ class _MusicPageState extends State<MusicPage> {
         height: 50,
         width: 50,
         decoration: BoxDecoration(
-            image: DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
+            image:
+                DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
             borderRadius: BorderRadius.circular(10.0)),
       ),
     );

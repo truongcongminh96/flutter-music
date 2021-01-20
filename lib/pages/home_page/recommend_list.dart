@@ -44,9 +44,7 @@ class _RecommendListState extends State<RecommendList> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) {
-                              return PodCasts();
-                            },
+                            builder: (context) => PodCasts(shows: showsList[index]),
                           ),
                         );
                       }));
