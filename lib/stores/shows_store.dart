@@ -14,7 +14,7 @@ abstract class _ShowsStore with Store {
 
   @action
   Future fetchShows() => showsListFuture = ObservableFuture(httpClient
-      .getData('https://api.spotify.com/v1/shows?ids=5Jv8JCo6QZcTBJBJP4YxhS%2C5NklUzf5uL4lSMQHwiIwdE%2C4S6f4GuS4XZgyM34AgMHH2&market=ES')
+      .getData('https://api.spotify.com/v1/shows?ids=6IOcX7Ml43BNThbh4Kplet%2C5NklUzf5uL4lSMQHwiIwdE%2C3RvksD9WQxXdHkdX6Z176N%2C5Jv8JCo6QZcTBJBJP4YxhS%2C4S6f4GuS4XZgyM34AgMHH2&market=ES')
       .then((shows) => shows));
 
   void getShows() {

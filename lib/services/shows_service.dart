@@ -19,7 +19,7 @@ class ShowsService {
       final data = jsonDecode(response.body);
       tracks = (data['shows'] as List).map((json) {
         return Shows.fromJson(json);
-      }).toList();print(tracks);
+      }).toList();
       return tracks;
     } else {
       print("Error in URL");

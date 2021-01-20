@@ -48,7 +48,7 @@ class ListCard extends StatelessWidget {
               ),
             ),
           ),
-          Image.asset(
+          Image.network(
             image,
             width: 150,
           ),
@@ -79,6 +79,7 @@ class ListCard extends StatelessWidget {
                     padding: EdgeInsets.only(left: 24),
                     child: RichText(
                       maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       text: TextSpan(
                         style: TextStyle(color: kBlackColor),
                         children: [

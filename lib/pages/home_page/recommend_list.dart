@@ -22,63 +22,39 @@ class _RecommendListState extends State<RecommendList> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     final showsListFuture = showsStore.showsListFuture;
     return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: <Widget>[
-          // Observer(builder: (_) {
-          //   final List<Shows> showsList = showsListFuture.result;
-          //   if (showsListFuture.status != FutureStatus.pending) {
-          //     return ListView.builder(
-          //         scrollDirection: Axis.horizontal,
-          //         itemCount: showsList.length,
-          //         itemBuilder: (context, index) => ListCard(
-          //             image: showsList[index].images.first.url,
-          //             title: showsList[index].name,
-          //             auth: showsList[index].publisher,
-          //             rating: 4.9,
-          //           pressDetails: () {
-          //             Navigator.push(
-          //               context,
-          //               MaterialPageRoute(
-          //                 builder: (context) {
-          //                   return PodCasts();
-          //                 },
-          //               ),
-          //             );
-          //           }
-          //         ));
-          //   }
-          //   return Center(
-          //     child: CircularProgressIndicator(),
-          //   );
-          // }),
-          ListCard(
-            image: "assets/images/book-1.png",
-            title: "Crushing & Influence",
-            auth: "Gary Venchuk",
-            rating: 4.9,
-            pressDetails: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return PodCasts();
-                  },
-                ),
-              );
-            },
-          ),
-          ListCard(
-            image: "assets/images/book-2.png",
-            title: "Top Ten Business Hacks",
-            auth: "Herman Joel",
-            rating: 4.8,
-          ),
-          SizedBox(width: 30),
-        ],
-      ),
-    );
+        scrollDirection: Axis.horizontal,
+        child: Container(
+          height: 285,
+          width: size.width,
+          child: Observer(builder: (_) {
+            final List<Shows> showsList = showsListFuture.result;
+            if (showsListFuture.status != FutureStatus.pending) {
+              return ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: showsList.length,
+                  itemBuilder: (context, index) => ListCard(
+                      image: showsList[index].images.first.url,
+                      title: showsList[index].name,
+                      auth: showsList[index].publisher,
+                      rating: 4.9,
+                      pressDetails: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return PodCasts();
+                            },
+                          ),
+                        );
+                      }));
+            }
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }),
+        ));
   }
 }
