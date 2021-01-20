@@ -9,12 +9,12 @@ class Episodes {
 
   Episodes(
       {this.href,
-        this.items,
-        this.limit,
-        this.next,
-        this.offset,
-        this.previous,
-        this.total});
+      this.items,
+      this.limit,
+      this.next,
+      this.offset,
+      this.previous,
+      this.total});
 
   Episodes.fromJson(Map<String, dynamic> json) {
     href = json['href'];
@@ -68,23 +68,23 @@ class Items {
 
   Items(
       {this.audioPreviewUrl,
-        this.description,
-        this.durationMs,
-        this.explicit,
-        this.externalUrls,
-        this.href,
-        this.id,
-        this.images,
-        this.isExternallyHosted,
-        this.isPlayable,
-        this.language,
-        this.languages,
-        this.name,
-        this.releaseDate,
-        this.releaseDatePrecision,
-        this.resumePoint,
-        this.type,
-        this.uri});
+      this.description,
+      this.durationMs,
+      this.explicit,
+      this.externalUrls,
+      this.href,
+      this.id,
+      this.images,
+      this.isExternallyHosted,
+      this.isPlayable,
+      this.language,
+      this.languages,
+      this.name,
+      this.releaseDate,
+      this.releaseDatePrecision,
+      this.resumePoint,
+      this.type,
+      this.uri});
 
   Items.fromJson(Map<String, dynamic> json) {
     audioPreviewUrl = json['audio_preview_url'];

@@ -23,13 +23,14 @@ abstract class _ShowsStore with Store {
       .then((shows) => shows));
 
   @action
-  Future fetchEpisodesShow() => episodesListFuture = ObservableFuture(httpClient
-      .getAllEpisodes(
-          'https://api.spotify.com/v1/shows/5NklUzf5uL4lSMQHwiIwdE/episodes?market=ES&limit=10&offset=5')
-      .then((episodes) => episodes));
+  Future fetchEpisodesShow(String showId) =>
+      episodesListFuture = ObservableFuture(httpClient
+          .getAllEpisodes(
+              'https://api.spotify.com/v1/shows/$showId/episodes?market=ES')
+          .then((episodes) => episodes));
 
-  void getEpisodesShow() {
-    fetchEpisodesShow();
+  void getEpisodesShow(String showId) {
+    fetchEpisodesShow(showId);
   }
 
   void getShows() {

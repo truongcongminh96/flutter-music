@@ -14,12 +14,11 @@ class Episodes extends StatefulWidget {
 }
 
 class _EpisodesState extends State<Episodes> {
-
   final ShowsStore showsStore = ShowsStore();
 
   @override
   void initState() {
-    showsStore.getEpisodesShow();
+    showsStore.getEpisodesShow(widget.showId.toString());
     super.initState();
   }
 
@@ -28,56 +27,38 @@ class _EpisodesState extends State<Episodes> {
     final episodesListFuture = showsStore.episodesListFuture;
     Size size = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.only(top: size.height * .48 - 20),
+      padding: EdgeInsets.only(top: size.height * .45 - 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          // Observer(builder: (_) {
-          //   final episodesList = episodesListFuture.result;print(episodesList.total);
-          //   if (episodesListFuture.status != FutureStatus.pending) {
-          //     return Container(
-          //       height: size.height/3,
-          //       width: size.width,
-          //       child: ListView.builder(
-          //           scrollDirection: Axis.vertical,
-          //           itemCount: episodesList.total,
-          //           itemBuilder: (context, index) => EpisodesCard(
-          //             name: episodesList.items[index].name,
-          //             chapterNumber: 1,
-          //             tag: "Life is about change",
-          //             press: () {},
-          //           )
-          //       ),
-          //     );
-          //   } else {
-          //   return Center(
-          //     child: CircularProgressIndicator(),
-          //   );}
-          // }),
-          EpisodesCard(
-            name: "Money",
-            chapterNumber: 1,
-            tag: "Life is about change",
-            press: () {},
-          ),
-          EpisodesCard(
-            name: "Power",
-            chapterNumber: 2,
-            tag: "Everything loves power",
-            press: () {},
-          ),
-          EpisodesCard(
-            name: "Influence",
-            chapterNumber: 3,
-            tag: "Influence easily",
-            press: () {},
-          ),
-          EpisodesCard(
-            name: "Win",
-            chapterNumber: 4,
-            tag: "Winning is what matters",
-            press: () {},
-          ),
+          Observer(builder: (_) {
+            final episodesList = episodesListFuture.result;
+            if (episodesListFuture.status != FutureStatus.pending) {
+              return Container(
+                height: size.height / 3,
+                width: size.width,
+                child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: episodesList.items.length,
+                    itemBuilder: (context, index) => Column(
+                          children: [
+                            EpisodesCard(
+                              imageUrl:
+                                  episodesList.items[index].images.first.url,
+                              name: episodesList.items[index].name,
+                              chapterNumber: 1,
+                              tag: episodesList.items[index].description,
+                              press: () {},
+                            )
+                          ],
+                        )),
+              );
+            } else {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          }),
           SizedBox(height: 10),
         ],
       ),

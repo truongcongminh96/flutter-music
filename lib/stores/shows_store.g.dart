@@ -53,11 +53,11 @@ mixin _$ShowsStore on _ShowsStore, Store {
   }
 
   @override
-  Future<dynamic> fetchEpisodesShow() {
+  Future<dynamic> fetchEpisodesShow(String showId) {
     final _$actionInfo = _$_ShowsStoreActionController.startAction(
         name: '_ShowsStore.fetchEpisodesShow');
     try {
-      return super.fetchEpisodesShow();
+      return super.fetchEpisodesShow(showId);
     } finally {
       _$_ShowsStoreActionController.endAction(_$actionInfo);
     }
