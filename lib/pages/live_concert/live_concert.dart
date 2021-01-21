@@ -15,11 +15,13 @@ class _LiveConcertState extends State<LiveConcert> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-            padding: EdgeInsets.only(left: kDefaultPadding),
+            padding: EdgeInsets.only(left: defaultPadding),
             icon: SvgPicture.asset('assets/icons/menu.svg'),
             onPressed: () {}),
         actions: [
-          IconButton(icon: SvgPicture.asset('assets/icons/search.svg'), onPressed: () {})
+          IconButton(
+              padding: EdgeInsets.only(left: defaultPadding),
+              icon: SvgPicture.asset('assets/icons/search.svg'), onPressed: () {})
         ],
       ),
     );

@@ -24,9 +24,9 @@ class _DailyBestState extends State<DailyBest> {
             text: TextSpan(
               style: Theme.of(context).textTheme.headline4,
               children: [
-                TextSpan(text: "Best of the "),
+                TextSpan(text: "Live "),
                 TextSpan(
-                  text: "day",
+                  text: "concert",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],

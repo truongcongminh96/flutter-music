@@ -16,9 +16,9 @@ const darkBLueColor = Color(0xFF12153D);
 const textLightColor = Color(0xFF9A9BB2);
 const starColor = Color(0xFFFCC419);
 
-const kDefaultPadding = 20.0;
+const defaultPadding = 20.0;
 
-const kDefaultShadow = BoxShadow(
+const defaultBoxShadow = BoxShadow(
   offset: Offset(0, 4),
   blurRadius: 4,
   color: Colors.black26,

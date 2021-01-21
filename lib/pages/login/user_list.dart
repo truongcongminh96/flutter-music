@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+
+import 'package:flutter_music/pages/splash_screen/music_splash_screen.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_music/stores/user_store.dart';
 import 'package:flutter_music/models/user.dart';
@@ -32,7 +34,14 @@ class UserList extends StatelessWidget {
                 final user = users[index];
                 return ListTile(
                   onTap: () {
-                    Navigator.pushNamed(context, '/home_page');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return MusicSplashScreen();
+                        },
+                      ),
+                    );
                   },
                   leading: CircleAvatar(
                     backgroundImage: NetworkImage(user.avatar),
