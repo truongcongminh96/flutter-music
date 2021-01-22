@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_music/models/models.dart';
 import 'package:flutter_music/widgets/night_city/widgets.dart';
+import 'package:flutter_music/widgets/play_button.dart';
 import 'package:video_player/video_player.dart';
 
 class ContentHeader extends StatelessWidget {
@@ -21,7 +24,7 @@ class ContentHeader extends StatelessWidget {
   }
 }
 
-class _ContentHeaderMobile extends StatelessWidget {
+class _ContentHeaderMobile extends StatefulWidget {
   final Content featuredContent;
 
   const _ContentHeaderMobile({
@@ -30,19 +33,69 @@ class _ContentHeaderMobile extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  __ContentHeaderMobileState createState() => __ContentHeaderMobileState();
+}
+
+class __ContentHeaderMobileState extends State<_ContentHeaderMobile> {
+  VideoPlayerController _videoController;
+  int _counter = 3;
+  Timer _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _videoController =
+        VideoPlayerController.network(widget.featuredContent.videoUrl)
+          ..initialize().then((_) => setState(() {}))
+          ..setVolume(0)
+          ..play();
+
+      _timer = Timer.periodic(Duration(seconds: 3), (timer) {
+        setState(() {
+          if (_counter > 0) {
+            _counter--;
+          } else {
+            _timer.cancel();
+          }
+        });
+      });
+    }
+
+
+  @override
+  void dispose() {
+    _videoController.dispose();
+    super.dispose();
+  }
+
+
+
+  @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Container(
-          height: 500.0,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(featuredContent.imageUrl),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
+        (_counter > 0)
+            ? Container(
+                height: 500.0,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(widget.featuredContent.imageUrl),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )
+            : AspectRatio(
+                aspectRatio: _videoController.value.initialized
+                    ? _videoController.value.aspectRatio
+                    : 2.344,
+                child: _videoController.value.initialized
+                    ? VideoPlayer(_videoController)
+                    : Image.asset(
+                        widget.featuredContent.imageUrl,
+                        fit: BoxFit.cover,
+                      ),
+              ),
         Container(
           height: 500.0,
           decoration: const BoxDecoration(
@@ -57,7 +110,7 @@ class _ContentHeaderMobile extends StatelessWidget {
           bottom: 110.0,
           child: SizedBox(
             width: 250.0,
-            child: Image.asset(featuredContent.titleImageUrl),
+            child: Image.asset(widget.featuredContent.titleImageUrl),
           ),
         ),
         Positioned(
@@ -72,7 +125,9 @@ class _ContentHeaderMobile extends StatelessWidget {
                 title: 'List',
                 onTap: () => print('My List'),
               ),
-              _PlayButton(),
+              PlayButton(
+                press: () =>print('play'),
+              ),
               VerticalIconButton(
                 icon: Icons.info_outline,
                 title: 'Info',
@@ -187,7 +242,7 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                 const SizedBox(height: 20.0),
                 Row(
                   children: [
-                    _PlayButton(),
+                    PlayButton(),
                     const SizedBox(width: 16.0),
                     FlatButton.icon(
                       padding:
@@ -224,27 +279,6 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _PlayButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return FlatButton.icon(
-      padding: !Responsive.isDesktop(context)
-          ? const EdgeInsets.fromLTRB(15.0, 5.0, 20.0, 5.0)
-          : const EdgeInsets.fromLTRB(25.0, 10.0, 30.0, 10.0),
-      onPressed: () => print('Play'),
-      color: Colors.white,
-      icon: const Icon(Icons.play_arrow, size: 30.0),
-      label: const Text(
-        'Play',
-        style: TextStyle(
-          fontSize: 16.0,
-          fontWeight: FontWeight.w600,
-        ),
       ),
     );
   }

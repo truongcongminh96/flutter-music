@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_music/mock/mock_night_city.dart';
+import 'package:flutter_music/pages/night_city/header_night_city.dart';
 import 'package:flutter_music/widgets/night_city/widgets.dart';
 
 class NightCity extends StatefulWidget {
