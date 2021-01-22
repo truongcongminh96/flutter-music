@@ -50,17 +50,16 @@ class __ContentHeaderMobileState extends State<_ContentHeaderMobile> {
           ..setVolume(0)
           ..play();
 
-      _timer = Timer.periodic(Duration(seconds: 3), (timer) {
-        setState(() {
-          if (_counter > 0) {
-            _counter--;
-          } else {
-            _timer.cancel();
-          }
-        });
+    _timer = Timer.periodic(Duration(seconds: 3), (timer) {
+      setState(() {
+        if (_counter > 0) {
+          _counter--;
+        } else {
+          _timer.cancel();
+        }
       });
-    }
-
+    });
+  }
 
   @override
   void dispose() {
@@ -68,34 +67,33 @@ class __ContentHeaderMobileState extends State<_ContentHeaderMobile> {
     super.dispose();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       children: [
-        (_counter > 0)
-            ? Container(
-                height: 500.0,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(widget.featuredContent.imageUrl),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              )
-            : AspectRatio(
-                aspectRatio: _videoController.value.initialized
-                    ? _videoController.value.aspectRatio
-                    : 2.344,
-                child: _videoController.value.initialized
-                    ? VideoPlayer(_videoController)
-                    : Image.asset(
-                        widget.featuredContent.imageUrl,
-                        fit: BoxFit.cover,
-                      ),
-              ),
+        // (_counter > 0)
+        //     ?
+        Container(
+          height: 500.0,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(widget.featuredContent.imageUrl),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        // : AspectRatio(
+        //     aspectRatio: _videoController.value.initialized
+        //         ? _videoController.value.aspectRatio
+        //         : 2.344,
+        //     child: _videoController.value.initialized
+        //         ? VideoPlayer(_videoController)
+        //         : Image.asset(
+        //             widget.featuredContent.imageUrl,
+        //             fit: BoxFit.cover,
+        //           ),
+        //   ),
         Container(
           height: 500.0,
           decoration: const BoxDecoration(
@@ -126,7 +124,11 @@ class __ContentHeaderMobileState extends State<_ContentHeaderMobile> {
                 onTap: () => print('My List'),
               ),
               PlayButton(
-                press: () =>print('play'),
+                press: () {
+                  _videoController.value.isPlaying
+                      ? _videoController.pause()
+                      : _videoController.play();
+                },
               ),
               VerticalIconButton(
                 icon: Icons.info_outline,

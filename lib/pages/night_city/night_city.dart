@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_music/mock/mock_night_city.dart';
 import 'package:flutter_music/pages/night_city/header_night_city.dart';
+import 'package:flutter_music/pages/radio/radio.dart';
 import 'package:flutter_music/widgets/night_city/widgets.dart';
 
 class NightCity extends StatefulWidget {
@@ -41,7 +42,14 @@ class _NightCityState extends State<NightCity> {
         backgroundColor: Colors.grey[850],
         child: const Icon(Icons.cast),
         onPressed: () {
-          print('cats');
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return RadioFm();
+              },
+            ),
+          );
         },
       ),
       appBar: PreferredSize(
