@@ -31,6 +31,29 @@ When the observables change, all reactions are re-run. What's interesting is tha
 
 ![plot](mobx-triad.png)
 
+## VelocityX
+
+VelocityX is a 100% free Flutter open-source minimalist UI Framework built with Flutter SDK to make Flutter development easier and more joyful than ever.
+https://pub.dev/packages/velocity_x
+![plot](velocity_x.png)
+
+
+## Alan voice assistant SDK for Flutter
+https://alan.app/
+
+Alan is a conversational voice AI platform that lets you create an intelligent voice assistant for your app. It offers all necessary tools to design, embed and host your conversational experiences:
+
+Alan Studio
+A web portal where you can write, test and manage dialog scenarios for your voice assistant or chatbot.
+
+Alan Client SDKs
+With Alan Client SDKs, you can quickly embed Alan's voice to your app.
+
+Alan Cloud
+Alan's AI-backend that maintains voice deployments and accomplishes all Spoken Language Understanding (SLU) and Natural Language Processing (NLP) tasks.
+
+To get more details on how Alan works, see Alan Platform.
+
 ## APP UI
 
 https://www.uplabs.com/posts/free-book-reading-app
