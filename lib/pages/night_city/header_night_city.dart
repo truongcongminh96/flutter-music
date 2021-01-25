@@ -47,7 +47,7 @@ class __ContentHeaderMobileState extends State<_ContentHeaderMobile> {
     _videoController =
         VideoPlayerController.network(widget.featuredContent.videoUrl)
           ..initialize().then((_) => setState(() {}))
-          ..setVolume(0)
+          ..setVolume(100)
           ..play();
 
     _timer = Timer.periodic(Duration(seconds: 3), (timer) {
@@ -72,8 +72,8 @@ class __ContentHeaderMobileState extends State<_ContentHeaderMobile> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        // (_counter > 0)
-        //     ?
+        (_counter > 0)
+            ?
         Container(
           height: 500.0,
           decoration: BoxDecoration(
@@ -82,18 +82,18 @@ class __ContentHeaderMobileState extends State<_ContentHeaderMobile> {
               fit: BoxFit.cover,
             ),
           ),
-        ),
-        // : AspectRatio(
-        //     aspectRatio: _videoController.value.initialized
-        //         ? _videoController.value.aspectRatio
-        //         : 2.344,
-        //     child: _videoController.value.initialized
-        //         ? VideoPlayer(_videoController)
-        //         : Image.asset(
-        //             widget.featuredContent.imageUrl,
-        //             fit: BoxFit.cover,
-        //           ),
-        //   ),
+        )
+        : AspectRatio(
+            aspectRatio: _videoController.value.initialized
+                ? _videoController.value.aspectRatio
+                : 2.344,
+            child: _videoController.value.initialized
+                ? VideoPlayer(_videoController)
+                : Image.asset(
+                    widget.featuredContent.imageUrl,
+                    fit: BoxFit.cover,
+                  ),
+          ),
         Container(
           height: 500.0,
           decoration: const BoxDecoration(
